@@ -31,15 +31,46 @@ Make sure your phone and your Chromebook are on the **same Wi-Fi network**.
 
 ## Running the app (every time)
 
+### Step 1 · Find the project folder
+
+> **Important:** The zip file is called `Clean_budget.zip` but the folder *inside* it is called **`budget-v4-1`**.  
+> Do **not** type `clean_budget` — that folder does not exist.
+
+If you placed the unzipped folder inside `android/` (Linux Files › android), the path is:
+
+```
+~/android/budget-v4-1
+```
+
+Not sure where it ended up? Run this to find it:
+
 ```bash
-# 1. Navigate to the project folder
-#    (Linux files > android > budget-v4-1 is the default location)
+find ~ -maxdepth 4 -type d -name "budget-v4-1" 2>/dev/null
+```
+
+The command will print the full path. Use that path in Step 2.
+
+### Step 2 · Navigate to the folder
+
+```bash
 cd ~/android/budget-v4-1
+```
 
-# 2. Install dependencies (first run only, or after any package.json change)
+Verify you are in the right place — you should see `App.js` listed:
+
+```bash
+ls
+```
+
+### Step 3 · Install dependencies *(first run only)*
+
+```bash
 npm install
+```
 
-# 3. Start the Expo development server
+### Step 4 · Start the Expo development server
+
+```bash
 npx expo start
 ```
 
@@ -88,6 +119,7 @@ Open the app → **Settings** → tap **INITIALIZE FAMILY CLOUD**.
 
 | Problem | Fix |
 |---|---|
+| `cd: ~/android/clean_budget: No such file or directory` | The folder name is **`budget-v4-1`**, not `clean_budget`. Run: `find ~ -maxdepth 4 -type d -name "budget-v4-1" 2>/dev/null` to find the exact path |
 | `Cannot find module 'firebase/compat/app'` | Run `npm install` — the `node_modules` folder is missing |
 | QR code shows but app won't load | Phone and Chromebook must be on the **same Wi-Fi network** |
 | `Metro bundler` error on start | Delete `.expo/` folder and re-run `npx expo start` |
