@@ -120,6 +120,7 @@ Open the app → **Settings** → tap **INITIALIZE FAMILY CLOUD**.
 | Problem | Fix |
 |---|---|
 | `cd: ~/android/clean_budget: No such file or directory` | The folder name is **`budget-v4-1`**, not `clean_budget`. Run: `find ~ -maxdepth 4 -type d -name "budget-v4-1" 2>/dev/null` to find the exact path |
+| `Fatal Error: java.io.IOException: Failed to download remote update` | Expo Go tried to fetch an OTA update that doesn't exist. Re-download **`Clean_budget.zip`** from this repo (the `app.json` inside now has `"updates": { "enabled": false }` to prevent this). Then delete Expo Go's cache: Android Settings → Apps → Expo Go → Storage → Clear Cache, and re-scan the QR code |
 | `Cannot find module 'firebase/compat/app'` | Run `npm install` — the `node_modules` folder is missing |
 | QR code shows but app won't load | Phone and Chromebook must be on the **same Wi-Fi network** |
 | `Metro bundler` error on start | Delete `.expo/` folder and re-run `npx expo start` |
